@@ -12,7 +12,6 @@ import "@fontsource/roboto/700.css";
 import { useState } from "react";
 
 function App() {
-  console.log("App render");
   const [listPosts, setListPosts] = useState([]);
   const [copyListPosts, setCopyListPosts] = useState([]);
 
