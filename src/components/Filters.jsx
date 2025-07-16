@@ -5,10 +5,11 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useTransition } from "react";
 
 export default function Filters({ setListPosts, copyListPosts, setSearchTerm }) {
   const [filterValue, setFilterValue] = useState({ sort: "", search: "" });
+  const [isPending, startTransition] = useTransition();
 
   const filteredPosts = useMemo(() => {
     let result = [...copyListPosts];
@@ -26,10 +27,14 @@ export default function Filters({ setListPosts, copyListPosts, setSearchTerm }) 
     return result;
   }, [filterValue]);
 
+  function updatePostList(filteredPosts) {
+    startTransition(() => setListPosts(filteredPosts));
+  }
+
   useEffect(() => {
-    setListPosts(filteredPosts);
+    updatePostList(filteredPosts);
     setSearchTerm(filterValue.search);
-  }, [filteredPosts]);
+  }, [filteredPosts, filterValue.search]);
 
   const handleChangeSort = (event) => {
     setFilterValue((prev) => ({ ...prev, sort: event.target.value }));
