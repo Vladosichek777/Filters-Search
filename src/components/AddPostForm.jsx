@@ -4,7 +4,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { useState } from "react";
 
-export default function AddPost({ newPost }) {
+export default function AddPostForm({ newPost }) {
   const [post, setPost] = useState({ title: "", body: "" });
 
   const handleAddNewPost = (e) => {
