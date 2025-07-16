@@ -46,7 +46,7 @@ export default function Filters({ setListPosts, copyListPosts, setSearchTerm }) 
   };
 
   return (
-    <Box sx={{ display: "flex", gap: "50px", paddingTop: "20px" }}>
+    <Box sx={{ display: "flex", gap: { xs: "15px", sm: "50px" }, paddingTop: "20px", flexWrap: "wrap" }}>
       <Box sx={{ width: "200px" }}>
         <FormControl fullWidth>
           <InputLabel id="demo-simple-select-label">Sort</InputLabel>

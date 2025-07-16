@@ -48,14 +48,14 @@ function App() {
       })
       .finally(() => setIsLoading(false));
   };
-  console.log(searchTerm);
+
   return (
     <Container
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        paddingTop: "20vh",
+        paddingTop: { sm: "20vh", xs: "5vh" },
         paddingBottom: "10vh",
         bgcolor: "#e0e2e4",
         minHeight: "80vh",
@@ -76,7 +76,7 @@ function App() {
         </>
       )}
       {listPosts.length > 0 ? (
-        <>
+        <div>
           <Button
             sx={{ marginBottom: "10px" }}
             variant="contained"
@@ -90,9 +90,18 @@ function App() {
             Clear posts list
           </Button>
           <PostsList listPosts={listPosts} deletePost={handleDeletePost} searchTerm={searchTerm} />
-        </>
+        </div>
       ) : (
-        <Typography variant="h3" gutterBottom>
+        <Typography
+          sx={{
+            fontSize: {
+              xs: "1.25rem",
+              sm: "2rem",
+            },
+            fontWeight: "bold",
+          }}
+          gutterBottom
+        >
           Add your first post :)
         </Typography>
       )}

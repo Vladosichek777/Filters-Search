@@ -10,28 +10,30 @@ import { highlightText } from "../utils.jsx/highlightText";
 
 export default function PostsList({ listPosts, deletePost, searchTerm }) {
   return (
-    <Virtuoso
-      style={{ height: "80vh", width: "70%" }}
-      data={listPosts}
-      itemContent={(_, post) => (
-        <Box>
-          <Paper sx={{ padding: "10px 30px", marginBottom: "20px" }} variant="elevation" elevation={5}>
-            <Stack direction="row" justifyContent="space-between" alignItems="center">
-              <Box>
-                <Typography sx={{ textDecoration: "underline" }} variant="subtitle1" gutterBottom>
-                  {highlightText(post.title, searchTerm)}
-                </Typography>
-                <Typography variant="body2" gutterBottom>
-                  {highlightText(post.body, searchTerm)}
-                </Typography>
-              </Box>
-              <IconButton onClick={() => deletePost(post.id)} aria-label="delete">
-                <DeleteIcon color="error" />
-              </IconButton>
-            </Stack>
-          </Paper>
-        </Box>
-      )}
-    />
+    <Box sx={{ height: { xs: "50vh", sm: "70vh" }, width: "80vw" }}>
+      <Virtuoso
+        style={{ height: "100%", width: "100%" }}
+        data={listPosts}
+        itemContent={(_, post) => (
+          <Box>
+            <Paper sx={{ padding: { sm: "10px 30px", xs: "10px" }, marginBottom: "20px" }} variant="elevation" elevation={5}>
+              <Stack direction="row" justifyContent="space-between" alignItems="center">
+                <Box>
+                  <Typography sx={{ textDecoration: "underline" }} variant="subtitle1" gutterBottom>
+                    {highlightText(post.title, searchTerm)}
+                  </Typography>
+                  <Typography variant="body2" gutterBottom>
+                    {highlightText(post.body, searchTerm)}
+                  </Typography>
+                </Box>
+                <IconButton onClick={() => deletePost(post.id)} aria-label="delete">
+                  <DeleteIcon color="error" />
+                </IconButton>
+              </Stack>
+            </Paper>
+          </Box>
+        )}
+      />
+    </Box>
   );
 }

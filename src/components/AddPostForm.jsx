@@ -15,7 +15,7 @@ export default function AddPostForm({ newPost }) {
 
   return (
     <form action="submit" onSubmit={handleAddNewPost}>
-      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "left", width: "40vw", borderRadius: "10px", padding: "30px", backgroundColor: "white", gap: "30px" }}>
+      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "left", width: { sm: "40vw", xs: "70vw" }, borderRadius: "10px", padding: { sm: "30px", xs: "15px" }, backgroundColor: "white", gap: "30px" }}>
         <Input
           placeholder="Title"
           required
