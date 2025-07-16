@@ -19,6 +19,7 @@ function App() {
   const [listPosts, setListPosts] = useState([]);
   const [copyListPosts, setCopyListPosts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const createNewPost = (title, body) => {
     setListPosts([...listPosts, { title, body, id: uuidv4() }]);
@@ -47,7 +48,7 @@ function App() {
       })
       .finally(() => setIsLoading(false));
   };
-
+  console.log(searchTerm);
   return (
     <Container
       sx={{
@@ -63,7 +64,7 @@ function App() {
       }}
     >
       <AddPostForm newPost={createNewPost} />
-      <Filters setListPosts={setListPosts} copyListPosts={copyListPosts} />
+      <Filters setListPosts={setListPosts} copyListPosts={copyListPosts} setSearchTerm={setSearchTerm} />
       <Button sx={{ marginLeft: "auto", marginTop: "30px" }} variant="outlined" onClick={handleGetPosts} disabled={isLoading}>
         {" "}
         Get Posts
@@ -88,7 +89,7 @@ function App() {
           >
             Clear posts list
           </Button>
-          <PostsList listPosts={listPosts} deletePost={handleDeletePost} />
+          <PostsList listPosts={listPosts} deletePost={handleDeletePost} searchTerm={searchTerm} />
         </>
       ) : (
         <Typography variant="h3" gutterBottom>

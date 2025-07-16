@@ -6,9 +6,8 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { useEffect, useState, useMemo } from "react";
-// import debounce from "lodash/debounce";
 
-export default function Filters({ setListPosts, copyListPosts }) {
+export default function Filters({ setListPosts, copyListPosts, setSearchTerm }) {
   const [filterValue, setFilterValue] = useState({ sort: "", search: "" });
 
   const filteredPosts = useMemo(() => {
@@ -29,6 +28,7 @@ export default function Filters({ setListPosts, copyListPosts }) {
 
   useEffect(() => {
     setListPosts(filteredPosts);
+    setSearchTerm(filterValue.search);
   }, [filteredPosts]);
 
   const handleChangeSort = (event) => {
@@ -42,6 +42,7 @@ export default function Filters({ setListPosts, copyListPosts }) {
   const handleReset = () => {
     setFilterValue({ sort: "", search: "" });
     setListPosts(copyListPosts);
+    setSearchTerm("");
   };
 
   return (

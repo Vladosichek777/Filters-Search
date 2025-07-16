@@ -6,7 +6,9 @@ import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Virtuoso } from "react-virtuoso";
 
-export default function PostsList({ listPosts, deletePost }) {
+import { highlightText } from "../utils.jsx/highlightText";
+
+export default function PostsList({ listPosts, deletePost, searchTerm }) {
   return (
     <Virtuoso
       style={{ height: "80vh", width: "70%" }}
@@ -17,10 +19,10 @@ export default function PostsList({ listPosts, deletePost }) {
             <Stack direction="row" justifyContent="space-between" alignItems="center">
               <Box>
                 <Typography sx={{ textDecoration: "underline" }} variant="subtitle1" gutterBottom>
-                  {post.title}
+                  {highlightText(post.title, searchTerm)}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                  {post.body}
+                  {highlightText(post.body, searchTerm)}
                 </Typography>
               </Box>
               <IconButton onClick={() => deletePost(post.id)} aria-label="delete">
