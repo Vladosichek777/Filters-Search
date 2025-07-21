@@ -10,7 +10,7 @@ import { highlightText } from "../utils.jsx/highlightText";
 
 export default function PostsList({ listPosts, deletePost, searchTerm }) {
   return (
-    <Box sx={{ height: { xs: "50vh", sm: "70vh" }, width: "70vw" }}>
+    <Box sx={{ height:'80vh', width: "70vw" }}>
       <Virtuoso
         style={{ height: "100%", width: "100%" }}
         data={listPosts}

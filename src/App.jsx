@@ -56,7 +56,7 @@ function App() {
         flexDirection: "column",
         alignItems: "center",
         paddingTop: { sm: "20vh", xs: "5vh" },
-        paddingBottom: "10vh",
+        paddingBottom: { sm: "7vh", xs: "3vh" },
         bgcolor: "#e0e2e4",
         minHeight: "80vh",
         boxShadow: "0px 0px 9px 0px",
